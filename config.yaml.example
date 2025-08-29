@@ -1,0 +1,33 @@
+# Vegas Dual Tunnel Trading Bot 配置文件示例
+# 请复制此文件为 config.yaml 并填入真实的配置信息
+
+# Telegram机器人配置
+telegram:
+  bot_token: "YOUR_BOT_TOKEN_HERE"  # 从 @BotFather 获取
+  chat_id: 0                        # 你的Telegram用户ID或群组ID
+  timeout: 60                       # 请求超时时间（秒）
+
+# Binance API配置
+binance:
+  api_key: "YOUR_API_KEY_HERE"      # Binance API密钥
+  secret_key: "YOUR_SECRET_KEY_HERE" # Binance API密钥
+  testnet: true                     # 是否使用测试网（建议先用测试网）
+  base_url: ""                      # 自动根据testnet设置
+
+# 数据库配置
+database:
+  path: "./data/trading_bot.db"     # SQLite数据库文件路径
+
+# 交易配置
+trading:
+  symbol: "BTCUSDT"                 # 交易对
+  leverage: 10                      # 杠杆倍数
+  position_size: 100.0              # 仓位大小（USDT）
+  stop_loss_percent: 2.0            # 止损百分比
+  take_profit_percent: 4.0          # 止盈百分比
+  max_positions: 3                  # 最大同时持仓数
+
+# 日志配置
+log:
+  level: "info"                     # 日志级别: debug, info, warn, error
+  file: ""                          # 日志文件路径（空则输出到控制台）

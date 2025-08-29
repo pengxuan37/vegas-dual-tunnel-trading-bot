@@ -1,0 +1,48 @@
+{
+  "database": {
+    "path": "./data/trading_bot.db"
+  },
+  "binance": {
+    "api_key": "your_binance_api_key_here",
+    "secret_key": "your_binance_secret_key_here",
+    "testnet": true,
+    "base_url": "https://testnet.binance.vision",
+    "ws_url": "wss://testnet-dstream.binance.com"
+  },
+  "telegram": {
+    "bot_token": "your_telegram_bot_token_here",
+    "chat_ids": ["your_chat_id_1", "your_chat_id_2"],
+    "admin_chat_id": "your_admin_chat_id_here"
+  },
+  "trading": {
+    "default_quantity": "0.01",
+    "max_positions": 5,
+    "risk_per_trade": "0.02",
+    "stop_loss_percent": "0.02",
+    "take_profit_percent": "0.04"
+  },
+  "strategy": {
+    "vegas_tunnel": {
+      "enabled": true,
+      "ema_short_period": 12,
+      "ema_long_period": 144,
+      "rsi_period": 14,
+      "rsi_oversold": 30,
+      "rsi_overbought": 70,
+      "min_tunnel_width": "0.001",
+      "timeframe": "1h"
+    }
+  },
+  "monitoring": {
+    "symbols": ["BTCUSDT", "ETHUSDT", "ADAUSDT"],
+    "intervals": ["1h", "4h"],
+    "health_check_interval": 300
+  },
+  "logging": {
+    "level": "info",
+    "file": "./logs/trading_bot.log",
+    "max_size": 100,
+    "max_backups": 5,
+    "max_age": 30
+  }
+}
