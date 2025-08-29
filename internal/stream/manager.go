@@ -281,24 +281,20 @@ func (sh *StrategyHandler) HandleKlineData(data *binance.KlineStreamData) error 
 	low, _ := decimal.NewFromString(data.Data.Kline.Low)
 	close, _ := decimal.NewFromString(data.Data.Kline.Close)
 	volume, _ := decimal.NewFromString(data.Data.Kline.Volume)
-	quoteVolume, _ := decimal.NewFromString(data.Data.Kline.QuoteAssetVolume)
 
 	// 转换为策略所需的K线数据格式
 	klineData := &strategy.KlineData{
-		Symbol:      data.Data.Symbol,
-		OpenTime:    time.Unix(data.Data.Kline.StartTime/1000, 0),
-		CloseTime:   time.Unix(data.Data.Kline.EndTime/1000, 0),
-		Open:        open,
-		High:        high,
-		Low:         low,
-		Close:       close,
-		Volume:      volume,
-		QuoteVolume: quoteVolume,
-		IsClosed:    data.Data.Kline.IsClosed,
+		Symbol:    data.Data.Symbol,
+		Open:      open,
+		High:      high,
+		Low:       low,
+		Close:     close,
+		Volume:    volume,
+		Timestamp: time.Unix(data.Data.Kline.StartTime/1000, 0),
 	}
 
 	// 只处理已关闭的K线
-	if !klineData.IsClosed {
+	if !data.Data.Kline.IsClosed {
 		return nil
 	}
 
